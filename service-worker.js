@@ -1,5 +1,5 @@
 const CACHE_CONTENT = 'InFoot-Content-v1.0';
-const CACHE_APP = 'InFoot-App-v1.2';
+const CACHE_APP = 'InFoot-App-v1.0';
 var urlsToCache = [
 	".",
 	"css/materialize.min.css",
@@ -37,28 +37,36 @@ self.addEventListener('activate', function(event) {
 	event.waitUntil(self.clients.claim());
 })
 
+self.addEventListener('activate', function(event) {
+	event.waitUntil(
+		caches.keys().then(function(cacheNames) {
+			return Promise.all(
+				cacheNames.map(function(cacheName) {
+					if (!(cacheName == CACHE_APP || cacheName == CACHE_CONTENT)) {
+						console.log('Serviceworker: cache ' + cacheName + ' dihapus');
+						return caches.delete(cacheName);
+					}
+				})
+			);
+		})
+	);
+});
+
+
  
 //  Fungsi untuk membuat source konten dari api football di caching secara dinamis
 self.addEventListener('fetch', function(event) {
-	if (event.request.url.startsWith('https://api.football-data.org/v2/')) {
-		event.respondWith(
-			caches.match(event.request).then(function(cacheResponse) {
-				return caches.open(CACHE_CONTENT).then(function(cache) {
-					var fetchResponse = fetch(event.request).then(function(networkResponse) {
-						cache.put(event.request, networkResponse.clone());
-						return networkResponse;
-					});
-					return cacheResponse || fetchResponse;
-				})
+	event.respondWith(
+		caches.match(event.request).then(function(cacheResponse) {
+			return caches.open(CACHE_CONTENT).then(function(cache) {
+				var fetchResponse = fetch(event.request).then(function(networkResponse) {
+					cache.put(event.request, networkResponse.clone());
+					return networkResponse;
+				});
+				return cacheResponse || fetchResponse;
 			})
-		)
-	}	else {
-		event.respondWith(
-			caches.match(event.request).then(function(response) {
-				return response || fetch(event.request);
-			})
-		)
-	}
+		})
+	)
 })
 
 
