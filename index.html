@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="theme-color" content="#42a5f5">
+	<link rel="manifest" href="manifest.json">
+	<link rel="icon" type="image/png" sizes="32x32" href="img/favicon.png">
+	<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+	<link rel="stylesheet" href="css/materialize.min.css">
+	<link rel="stylesheet" href="css/style.css">
+	<title>InFoot - Football Information Web</title>
+</head>
+<body>
+
+	<header>
+		<nav class="hide-on-large-only blue lighten-1">
+			<div class="nav-wrapper">
+				<a href="#home" class="brand-logo icon-text"></a>
+				<a href="#" data-target="nav" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+			</div>
+		</nav>
+	
+		<ul class="sidenav sidenav-fixed" id="nav">
+			<li>
+				<a href="#home" class="fit-content center">
+					<img src="/img/icon-192x192.png" alt="InFoot Icon">
+				</a>
+			</li>
+			<div class="divider"></div>
+			<li><a href="#home"><i class="material-icons">home</i>Home</a></li>
+			<li><a href="#klasemen"><i class="material-icons">notes</i> Informasi Klasemen</a></li>
+			<li><a href="#informasi-tim"><i class="material-icons">people</i> Informasi Tim</a></li>
+			<li><a href="#jadwal-pertandingan"><i class="material-icons">today</i> Jadwal Pertandingan Tim</a></li>
+			<li><a href="#daftar-jadwal-disimpan" id="jadwal-disimpan"><i class="material-icons">offline_pin</i> Pertandingan Tim Disimpan</a></li>
+			<li><a href="#credit"><i class="material-icons">copyright</i> Credit</a></li>
+		</ul>
+	</header>
+
+	<div class="divider"></div>
+
+	<main id="main-content"></main>
+
+	<script src="js/materialize.min.js"></script>
+	<script src="js/idb.js"></script>
+	<script src="js/db.js"></script>
+	<script src="js/script.js"></script>
+	<script>
+		// REGISTER SERVICE WORKER
+		if('serviceWorker' in navigator) {
+			window.addEventListener('load', function() {
+				navigator.serviceWorker
+					.register('service-worker.js')
+					.then(function() {
+						console.log('Pendaftaran Serviceworker berhasil');
+					})
+					.catch(function() {
+						console.log('Pendaftaran Serviceworker gagal');
+					});
+			});
+		} else {
+			console.log('Serviceworker belum didukung browser ini.');
+		}
+		requestNotifPermission();
+</script>
+</body>
+</html>

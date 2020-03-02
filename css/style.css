@@ -1,0 +1,95 @@
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Material Icons'),
+    local('MaterialIcons-Regular'),
+    url('/webfont/MaterialIcons-Regular.woff2') format('woff2')
+}
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;  /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Support for IE. */
+  font-feature-settings: 'liga';
+}
+header, main, footer {
+	padding-left: 300px;
+}
+
+@media only screen and (max-width: 992px) {
+	header, main, footer {
+		padding-left: 0;
+	}
+}
+
+.p1 {
+	padding: 0.75rem !important;
+}
+.p2 {
+	padding: 1.5rem !important;
+}
+.p3 {
+	padding: 2.5rem !important;
+}
+.px3 {
+	padding-left: 2.5rem !important;
+	padding-right: 2.5rem !important;
+}
+.fit-content {
+	height: fit-content !important;
+}
+.justify-align {
+	text-align: justify;
+}
+.no-wrap {
+  white-space: nowrap;
+}
+.auto-overflow {
+  overflow: auto;
+  max-height: 500px;
+}
+
+.banner {
+	width: 100%;
+	max-width: 300px;
+}
+.custom-title {
+	font-size: 2.5em;
+	margin: 0.67em;
+}
+.icon-text::after {
+	content: '';
+	display: block;
+	width: 130px;
+	height: 50px;
+	background-image: url(/img/icon-text.png);
+	background-size: cover;
+	background-position: 0px 5px;
+	background-repeat: no-repeat;
+}
+.credit-img {
+	max-width: 100px;
+}
+
+.football-team-logo {
+  max-width: 40px;
+  margin-right: 5px;
+}
