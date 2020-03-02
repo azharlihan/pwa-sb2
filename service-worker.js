@@ -1,5 +1,5 @@
 const CACHE_CONTENT = 'InFoot-Content-v1.0';
-const CACHE_APP = 'InFoot-App-v1.1';
+const CACHE_APP = 'InFoot-App-v1.2';
 var urlsToCache = [
 	".",
 	"css/materialize.min.css",

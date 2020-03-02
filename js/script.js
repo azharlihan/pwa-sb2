@@ -26,7 +26,7 @@ function requestNotifPermission() {
 						null, new Uint8Array(subscribe.getKey('auth'))
 					)));
 				}).catch((err)=> {
-					console.error('Tidak dapat melakukan subscribe', e.message);
+					console.error('Tidak dapat melakukan subscribe', err.message);
 				});
 			});
 		}
